@@ -2,11 +2,9 @@
 import "./Main.css";
 
 const Main = () => {
-  const [ingredients, setIngredients] = useState<string[]>([
-    "Chicken",
-    "Oregano",
-    "Tomatoes",
-  ]);
+  const [ingredients, setIngredients] = useState(
+    ["chicken", "all the main spices", "corn", "heavy cream", "pasta"]
+)
   const ingredientListItems = ingredients.map((ingredient, index) => (
     <li key={index}>{ingredient}</li>
   ));
