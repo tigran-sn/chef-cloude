@@ -33,4 +33,34 @@ main {
             }
         }
     }
+
+    .getRecipe__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 8px;
+        background-color: #F0EFEB;
+        padding: 10px 20px;
+
+        h3 {
+            font-size: 1.125rem;
+            font-weight: 500;
+            line-height: 24px;
+        }
+
+        p {
+            color: #687280;
+            font-size: .875rem;
+            line-height: 20px;
+        }
+
+        button {
+            color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            background-color: orange;
+            cursor: pointer;
+        }
+    }
 }
