@@ -55,11 +55,14 @@ main {
         }
 
         button {
-            color: #fff;
-            padding: 10px;
-            border-radius: 8px;
             border: none;
-            background-color: orange;
+            border-radius: 6px;
+            background: #D17557;
+            box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+            color: #FAFAF8;
+            padding: 9px 17px;
+            font-family: Inter, sans-serif;
+            font-size: 0.875rem;
             cursor: pointer;
         }
     }
