@@ -47,7 +47,9 @@ export async function getRecipeFromChefClaude(
 // for VITE_HF_ACCESS_TOKEN
 const hf = new HfInference(import.meta.env.VITE_HF_ACCESS_TOKEN);
 
-export async function getRecipeFromMistral(ingredientsArr: string[]) {
+export async function getRecipeFromMistral(
+  ingredientsArr: string[]
+): Promise<string | undefined> {
   const ingredientsString = ingredientsArr.join(", ");
   try {
     const response = await hf.chatCompletion({
