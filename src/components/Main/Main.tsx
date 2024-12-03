@@ -1,17 +1,12 @@
 import { useState } from "react";
 import "./Main.css";
-import RecipePlaceholder from "../RecipePlaceholder";
+import ClaudeRecipe from "../ClaudeRecipe";
 import IngredientsList from "../IngredientsList";
+import { getRecipeFromMistral } from "../../ai";
 
 const Main = () => {
-  const [recipeShown, setRecipeShown] = useState(false);
-  const [ingredients, setIngredients] = useState([
-    "chicken",
-    "all the main spices",
-    "corn",
-    "heavy cream",
-    "pasta",
-  ]);
+  const [recipe, setRecipe] = useState("");
+  const [ingredients, setIngredients] = useState<string[]>([]);
 
   function handleSubmit(event: {
     preventDefault: () => void;
@@ -30,8 +25,9 @@ const Main = () => {
     }
   }
 
-  function toggleRecipeShown(): void {
-    setRecipeShown((prevState: boolean) => !prevState);
+  async function getRecipe(): Promise<void> {
+    const recipeMarkdown = await getRecipeFromMistral(ingredients);
+    setRecipe(recipeMarkdown ? recipeMarkdown : "");
   }
 
   return (
@@ -47,12 +43,9 @@ const Main = () => {
       </form>
 
       {!!ingredients.length && (
-        <IngredientsList
-          ingredients={ingredients}
-          toggleRecipeShown={toggleRecipeShown}
-        />
+        <IngredientsList ingredients={ingredients} getRecipe={getRecipe} />
       )}
-      {recipeShown && <RecipePlaceholder />}
+      {recipe && <ClaudeRecipe recipe={recipe} />}
     </main>
   );
 };

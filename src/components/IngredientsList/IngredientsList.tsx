@@ -1,9 +1,9 @@
 const IngredientsList = ({
   ingredients,
-  toggleRecipeShown,
+  getRecipe,
 }: {
   ingredients: string[];
-  toggleRecipeShown: () => void;
+  getRecipe: () => void;
 }) => {
   const ingredientListItems = ingredients.map((ingredient, index) => (
     <li key={index}>{ingredient}</li>
@@ -21,7 +21,7 @@ const IngredientsList = ({
             <h3>Ready for recipe?</h3>
             <p>Generate a recipe from your list of ingredients.</p>
           </div>
-          <button onClick={toggleRecipeShown}>Get a recipe</button>
+          <button onClick={getRecipe}>Get a recipe</button>
         </div>
       )}
     </section>
