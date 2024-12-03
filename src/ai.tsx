@@ -18,13 +18,15 @@ You are an assistant that receives a list of ingredients that a user has and sug
 
 const anthropic = new Anthropic({
   // Make sure you set an environment variable in Scrimba
-  // for ANTHROPIC_API_KEY
-  apiKey: process.env.ANTHROPIC_API_KEY,
+  // for VITE_ANTHROPIC_API_KEY
+  apiKey: import.meta.env.VITE_ANTHROPIC_API_KEY,
 
   dangerouslyAllowBrowser: true,
 });
 
-export async function getRecipeFromChefClaude(ingredientsArr) {
+export async function getRecipeFromChefClaude(
+  ingredientsArr: string[]
+): Promise<string> {
   const ingredientsString = ingredientsArr.join(", ");
 
   const msg = await anthropic.messages.create({
@@ -38,14 +40,14 @@ export async function getRecipeFromChefClaude(ingredientsArr) {
       },
     ],
   });
-  return msg.content[0].text;
+  return (msg.content[0] as Anthropic.TextBlock).text;
 }
 
 // Make sure you set an environment variable in Scrimba
-// for HF_ACCESS_TOKEN
-const hf = new HfInference(process.env.HF_ACCESS_TOKEN);
+// for VITE_HF_ACCESS_TOKEN
+const hf = new HfInference(import.meta.env.VITE_HF_ACCESS_TOKEN);
 
-export async function getRecipeFromMistral(ingredientsArr) {
+export async function getRecipeFromMistral(ingredientsArr: string[]) {
   const ingredientsString = ingredientsArr.join(", ");
   try {
     const response = await hf.chatCompletion({
@@ -61,6 +63,6 @@ export async function getRecipeFromMistral(ingredientsArr) {
     });
     return response.choices[0].message.content;
   } catch (err) {
-    console.error(err.message);
+    console.error(err);
   }
 }
