@@ -1,9 +1,11 @@
 const IngredientsList = ({
   ingredients,
   getRecipe,
+  recipeSection,
 }: {
   ingredients: string[];
   getRecipe: () => void;
+  recipeSection: React.RefObject<HTMLDivElement>;
 }) => {
   const ingredientListItems = ingredients.map((ingredient, index) => (
     <li key={index}>{ingredient}</li>
@@ -16,7 +18,7 @@ const IngredientsList = ({
         {ingredientListItems}
       </ul>
       {ingredients.length > 3 && (
-        <div className="getRecipe__container">
+        <div ref={recipeSection} className="getRecipe__container">
           <div>
             <h3>Ready for recipe?</h3>
             <p>Generate a recipe from your list of ingredients.</p>

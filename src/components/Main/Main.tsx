@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./Main.css";
 import ClaudeRecipe from "../ClaudeRecipe";
 import IngredientsList from "../IngredientsList";
@@ -7,6 +7,13 @@ import { getRecipeFromMistral } from "../../ai";
 const Main = () => {
   const [recipe, setRecipe] = useState("");
   const [ingredients, setIngredients] = useState<string[]>([]);
+  const recipeSection = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (recipe !== "" && recipeSection.current !== null) {
+      recipeSection.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [recipe]);
 
   function handleSubmit(event: {
     preventDefault: () => void;
@@ -43,7 +50,11 @@ const Main = () => {
       </form>
 
       {!!ingredients.length && (
-        <IngredientsList ingredients={ingredients} getRecipe={getRecipe} />
+        <IngredientsList
+          recipeSection={recipeSection}
+          ingredients={ingredients}
+          getRecipe={getRecipe}
+        />
       )}
       {recipe && <ClaudeRecipe recipe={recipe} />}
     </main>
