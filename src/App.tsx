@@ -1,16 +1,17 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Header from "./components/Header";
 import Home from "./routes/Home";
 import Recipes from "./routes/Recipes";
+import Application from "./routes/Application";
 
 function App() {
   return (
     <>
-      <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/recipes" element={<Recipes />} />
+        <Route path="/" element={<Application />}>
+          <Route index element={<Home />} />
+          <Route path="/recipes" element={<Recipes />} />
+        </Route>
       </Routes>
     </>
   );
