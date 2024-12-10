@@ -1,8 +1,6 @@
 .nav {
   background-color: white;
   padding: 16px 32px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  border-bottom: 1px solid #f0f0f0;
 
   .nav__list {
     max-width: 1000px;
