@@ -1,7 +1,6 @@
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
-  signInWithRedirect,
   signInWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
@@ -30,9 +29,6 @@ googleProvider.setCustomParameters({
 export const auth = getAuth();
 export const signInWithGooglePopup = () =>
   signInWithPopup(auth, googleProvider);
-// TODO: Check for Firebase updates, as there is an official CORS related issue with signInWithRedirect
-export const signInWithGoogleRedirect = () =>
-  signInWithRedirect(auth, googleProvider);
 
 export const db = getFirestore();
 export const createUserDocumentFromAuth = async (userAuth: UserInfo) => {
