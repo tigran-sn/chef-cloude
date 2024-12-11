@@ -6,6 +6,7 @@ import {
 } from "../../utils/firebase/firebase.utils";
 
 import "./SignUp.css";
+import FormInput from "../FormInput";
 
 interface IFormFields {
   displayName: string;
@@ -79,8 +80,9 @@ const SignUp = () => {
         <h2>Create Account</h2>
 
         <div className="form-group">
-          <label htmlFor="displayName">Display name</label>
-          <input
+          <FormInput
+            label="Display name"
+            htmlFor="displayName"
             type="text"
             id="displayName"
             name="displayName"
@@ -91,8 +93,9 @@ const SignUp = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
+          <FormInput
+            label="Email"
+            htmlFor="email"
             type="email"
             id="email"
             name="email"
@@ -103,8 +106,9 @@ const SignUp = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
+          <FormInput
+            label="Password"
+            htmlFor="password"
             type="password"
             id="password"
             name="password"
@@ -115,8 +119,9 @@ const SignUp = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="confirmPassword">Confirm Password</label>
-          <input
+          <FormInput
+            label="Confirm Password"
+            htmlFor="confirmPassword"
             type="password"
             id="confirmPassword"
             name="confirmPassword"
