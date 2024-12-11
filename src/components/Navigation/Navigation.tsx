@@ -29,6 +29,14 @@ const Navigation = () => {
             Sign In
           </NavLink>
         </li>
+        <li className="nav__list-item">
+          <NavLink
+            to="/sign-up"
+            className={({ isActive }) => (isActive ? "active" : undefined)}
+          >
+            Sign Up
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );

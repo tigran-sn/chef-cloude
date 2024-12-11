@@ -5,6 +5,7 @@ import Recipes from "./routes/Recipes";
 import Application from "./routes/Application";
 import NotFound from "./routes/NotFound";
 import SignIn from "./routes/SignIn";
+import SignUp from "./components/SignUp";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/recipes" element={<Recipes />} />
           <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/sign-up" element={<SignUp />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
