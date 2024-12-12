@@ -7,6 +7,7 @@ import {
 
 import "./SignUp.css";
 import FormInput from "../FormInput";
+import Button from "../Button";
 
 interface IFormFields {
   displayName: string;
@@ -131,7 +132,7 @@ const SignUp = () => {
           />
         </div>
 
-        <button type="submit">Sign Up</button>
+        <Button type="submit">Sign Up</Button>
       </form>
     </div>
   );
