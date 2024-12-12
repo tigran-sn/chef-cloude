@@ -38,7 +38,7 @@ const Main = () => {
   }
 
   return (
-    <main>
+    <>
       <form onSubmit={handleSubmit} className="ingredientForm">
         <input
           type="text"
@@ -57,7 +57,7 @@ const Main = () => {
         />
       )}
       {recipe && <ClaudeRecipe recipe={recipe} />}
-    </main>
+    </>
   );
 };
 
