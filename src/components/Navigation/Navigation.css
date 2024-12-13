@@ -31,6 +31,8 @@
           color: #2d3748;
           background-color: #f7fafc;
           position: relative;
+          pointer-events: none;
+          opacity: 0.5;
 
           &::after {
             content: "";
