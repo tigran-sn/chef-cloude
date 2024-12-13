@@ -4,13 +4,13 @@ const AboutUs = () => {
   return (
     <div className="about-container">
       <div className="about-content">
-        <h1>About Chef Claude</h1>
+        <h1>About CulinaryAI</h1>
 
         <section className="about-section">
           <h2>Our Mission</h2>
           <p>
-            At Chef Claude, we're passionate about transforming the way you
-            cook. Our mission is to help you create delicious meals from the
+            At CulinaryAI, we're passionate about transforming the way you cook.
+            Our mission is to help you create delicious meals from the
             ingredients you already have, reducing food waste while making
             cooking more enjoyable and accessible.
           </p>
@@ -19,7 +19,7 @@ const AboutUs = () => {
         <section className="about-section">
           <h2>How It Works</h2>
           <p>
-            Using advanced AI technology, Chef Claude analyzes your available
+            Using advanced AI technology, CulinaryAI analyzes your available
             ingredients and generates personalized recipes tailored to what you
             have in your kitchen. No more searching through countless recipes
             only to find you're missing key ingredients.
@@ -50,9 +50,8 @@ const AboutUs = () => {
           <h2>Join Us</h2>
           <p>
             Whether you're an experienced chef or just starting your culinary
-            journey, Chef Claude is here to inspire your next delicious
-            creation. Let's reduce food waste and make cooking more enjoyable
-            together.
+            journey, CulinaryAI is here to inspire your next delicious creation.
+            Let's reduce food waste and make cooking more enjoyable together.
           </p>
         </section>
       </div>
