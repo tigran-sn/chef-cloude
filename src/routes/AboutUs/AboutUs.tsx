@@ -4,7 +4,9 @@ const AboutUs = () => {
   return (
     <div className="about-container">
       <div className="about-content">
-        <h1>About CulinaryAI</h1>
+        <h1>
+          About Culinary<span style={{ color: "#FF4B4B" }}>AI</span>
+        </h1>
 
         <section className="about-section">
           <h2>Our Mission</h2>

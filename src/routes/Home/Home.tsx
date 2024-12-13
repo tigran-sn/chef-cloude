@@ -4,7 +4,9 @@ const Home = () => {
   return (
     <div className="container">
       <div className="card">
-        <h1 className="heading">Welcome to CulinaryAI</h1>
+        <h1 className="heading">
+          Welcome to Culinary<span style={{ color: "#FF4B4B" }}>AI</span>
+        </h1>
         <p className="text">
           Transform your kitchen experience with our smart recipe generator.
           Simply add the ingredients you have on hand, and let AI craft
