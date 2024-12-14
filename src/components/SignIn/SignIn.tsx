@@ -1,8 +1,6 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
-
-import { UserContext } from "../../context/user.context";
 
 import {
   createUserDocumentFromAuth,
@@ -40,7 +38,6 @@ const defaultFormFields: IFormFields = {
 const SignIn = () => {
   const [formFields, setFormFields] = useState<IFormFields>(defaultFormFields);
   const { email, password } = formFields;
-  const { setCurrentUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   const signInWithGoogle = async () => {
@@ -52,11 +49,7 @@ const SignIn = () => {
     event.preventDefault();
 
     try {
-      const { user } = await signInAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
-      setCurrentUser(user);
+      await signInAuthUserWithEmailAndPassword(email, password);
       resetFormFields();
       navigate("/");
     } catch (error) {
