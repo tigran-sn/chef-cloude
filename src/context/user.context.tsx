@@ -2,7 +2,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { createContext, useState, useEffect } from "react";
 
-import { onAuthStateChangedListener } from "../utils/firebase/firebase.utils";
+import {
+  createUserDocumentFromAuth,
+  onAuthStateChangedListener,
+} from "../utils/firebase/firebase.utils";
 
 // as the actual value to access
 // eslint-disable-next-line react-refresh/only-export-components, @typescript-eslint/no-empty-object-type
@@ -22,6 +25,8 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   };
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener((user) => {
+      if (user) createUserDocumentFromAuth(user);
+
       setCurrentUser(user);
     });
 
