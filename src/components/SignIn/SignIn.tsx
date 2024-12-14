@@ -1,4 +1,8 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+
+import { useNavigate } from "react-router-dom";
+
+import { UserContext } from "../../context/user.context";
 
 import {
   createUserDocumentFromAuth,
@@ -36,22 +40,25 @@ const defaultFormFields: IFormFields = {
 const SignIn = () => {
   const [formFields, setFormFields] = useState<IFormFields>(defaultFormFields);
   const { email, password } = formFields;
+  const { setCurrentUser } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const signInWithGoogle = async () => {
     const { user } = await signInWithGooglePopup();
     await createUserDocumentFromAuth(user);
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
 
     try {
-      const response = await signInAuthUserWithEmailAndPassword(
+      const { user } = await signInAuthUserWithEmailAndPassword(
         email,
         password
       );
-      console.log(response);
+      setCurrentUser(user);
       resetFormFields();
+      navigate("/");
     } catch (error) {
       if ((error as IErrorResponse).code === "auth/invalid-credential") {
         alert("Invalid credentials");

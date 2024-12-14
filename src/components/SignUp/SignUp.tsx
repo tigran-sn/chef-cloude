@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../../context/user.context";
 
 import {
   createAuthUserWithEmailAndPassword,
@@ -9,6 +10,7 @@ import "./SignUp.css";
 import FormInput from "../FormInput";
 import Button from "../Button";
 import AuthLink from "../AuthLink/AuthLink";
+import { useNavigate } from "react-router-dom";
 
 interface IFormFields {
   displayName: string;
@@ -39,6 +41,8 @@ const defaultFormFields: IFormFields = {
 const SignUp = () => {
   const [formFields, setFormFields] = useState<IFormFields>(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
+  const { setCurrentUser } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -54,9 +58,12 @@ const SignUp = () => {
         password
       );
 
+      setCurrentUser(user);
+
       await createUserDocumentFromAuth(user, { displayName });
 
       resetFormFields();
+      navigate("/");
     } catch (error) {
       if ((error as IErrorResponse).code === "auth/email-already-in-use") {
         alert("Cannot create a user, email is already in use");

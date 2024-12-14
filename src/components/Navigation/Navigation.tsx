@@ -1,7 +1,20 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+
+import { UserContext } from "../../context/user.context";
+
+import { signOutUser } from "../../utils/firebase/firebase.utils";
+
 import "./Navigation.css";
 
 const Navigation = () => {
+  const { currentUser, setCurrentUser } = useContext(UserContext);
+
+  const signOutHanler = async () => {
+    await signOutUser();
+    setCurrentUser(null);
+  };
+
   return (
     <nav className="nav">
       <ul className="nav__list">
@@ -29,14 +42,20 @@ const Navigation = () => {
             About Us
           </NavLink>
         </li>
-        <li className="nav__list-item">
-          <NavLink
-            to="/auth"
-            className={({ isActive }) => (isActive ? "active" : undefined)}
-          >
-            Authentication
-          </NavLink>
-        </li>
+        {!currentUser ? (
+          <li className="nav__list-item">
+            <NavLink
+              to="/auth"
+              className={({ isActive }) => (isActive ? "active" : undefined)}
+            >
+              Authentication
+            </NavLink>
+          </li>
+        ) : (
+          <li className="nav__list-item">
+            <span onClick={signOutHanler}>Sign Out</span>
+          </li>
+        )}
       </ul>
     </nav>
   );
