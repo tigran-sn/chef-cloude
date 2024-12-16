@@ -1,16 +1,18 @@
 .ingredients__list {
   list-style: none;
-  margin-bottom: 20px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 
   li {
-    width: fit-content;
-    padding: 4px 0;
-
-    &::before {
-      content: "➤";
-      color: #ff4b4b;
-      font-weight: bold;
-      margin-right: 8px;
-    }
+    font-weight: 500;
+    padding: 6px 12px;
+    border: 1px solid #d1d5d8;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
 }
