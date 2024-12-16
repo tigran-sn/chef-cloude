@@ -32,6 +32,12 @@ const Main = () => {
     }
   }
 
+  const removeIngredient = (indexToRemove: number): void => {
+    setIngredients((prevIngredients) =>
+      prevIngredients.filter((_, index) => index !== indexToRemove)
+    );
+  };
+
   async function getRecipe(): Promise<void> {
     const recipeMarkdown = await getRecipeFromMistral(ingredients);
     setRecipe(recipeMarkdown ? recipeMarkdown : "");
@@ -54,6 +60,7 @@ const Main = () => {
           recipeSection={recipeSection}
           ingredients={ingredients}
           getRecipe={getRecipe}
+          removeIngredient={removeIngredient}
         />
       )}
       {recipe && <ClaudeRecipe recipe={recipe} />}

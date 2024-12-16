@@ -1,16 +1,30 @@
 import "./IngredientsList.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const IngredientsList = ({
   ingredients,
   getRecipe,
   recipeSection,
+  removeIngredient,
 }: {
   ingredients: string[];
   getRecipe: () => void;
   recipeSection: React.RefObject<HTMLDivElement>;
+  removeIngredient: (index: number) => void;
 }) => {
   const ingredientListItems = ingredients.map((ingredient, index) => (
-    <li key={index}>{ingredient}</li>
+    <li key={index}>
+      {ingredient}
+      <button
+        type="button"
+        onClick={() => removeIngredient(index)}
+        aria-label="Remove ingredient"
+        tabIndex={1}
+      >
+        <FontAwesomeIcon icon={faXmark} size="lg" />
+      </button>
+    </li>
   ));
 
   return (
