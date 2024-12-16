@@ -1,0 +1,16 @@
+.ingredients__list {
+  list-style: none;
+  margin-bottom: 20px;
+
+  li {
+    width: fit-content;
+    padding: 4px 0;
+
+    &::before {
+      content: "➤";
+      color: #ff4b4b;
+      font-weight: bold;
+      margin-right: 8px;
+    }
+  }
+}

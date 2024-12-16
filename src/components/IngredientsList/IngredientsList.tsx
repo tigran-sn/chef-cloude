@@ -1,3 +1,5 @@
+import "./IngredientsList.css";
+
 const IngredientsList = ({
   ingredients,
   getRecipe,
