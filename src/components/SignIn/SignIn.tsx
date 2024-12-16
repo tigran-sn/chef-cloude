@@ -48,8 +48,10 @@ const SignIn = () => {
 
     try {
       await signInAuthUserWithEmailAndPassword(email, password);
+      const redirectUrl =
+        new URLSearchParams(location.search).get("redirectUrl") || "/";
       resetFormFields();
-      navigate("/");
+      navigate(decodeURIComponent(redirectUrl));
     } catch (error) {
       if ((error as IErrorResponse).code === "auth/invalid-credential") {
         alert("Invalid credentials");

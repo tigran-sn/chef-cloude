@@ -21,14 +21,16 @@ const Navigation = () => {
             Home
           </NavLink>
         </li>
-        <li className="nav__list-item">
-          <NavLink
-            to="/recipes"
-            className={({ isActive }) => (isActive ? "active" : undefined)}
-          >
-            Recipes
-          </NavLink>
-        </li>
+        {currentUser && (
+          <li className="nav__list-item">
+            <NavLink
+              to="/recipes"
+              className={({ isActive }) => (isActive ? "active" : undefined)}
+            >
+              Recipes
+            </NavLink>
+          </li>
+        )}
         <li className="nav__list-item">
           <NavLink
             to="/about-us"
