@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./Main.css";
-import ClaudeRecipe from "../ClaudeRecipe";
+import CulinaryAIRecipe from "../CulinaryAIRecipe";
 import IngredientsList from "../IngredientsList";
 import { getRecipeFromMistral } from "../../ai";
 
@@ -63,7 +63,7 @@ const Main = () => {
           removeIngredient={removeIngredient}
         />
       )}
-      {recipe && <ClaudeRecipe recipe={recipe} />}
+      {recipe && <CulinaryAIRecipe recipe={recipe} />}
     </>
   );
 };

@@ -24,7 +24,7 @@ const anthropic = new Anthropic({
   dangerouslyAllowBrowser: true,
 });
 
-export async function getRecipeFromChefClaude(
+export async function getRecipeFromClaude(
   ingredientsArr: string[]
 ): Promise<string> {
   const ingredientsString = ingredientsArr.join(", ");
