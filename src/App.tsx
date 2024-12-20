@@ -12,6 +12,7 @@ import PrivateRoutes from "./components/PrivateRoutes";
 import Loader from "./components/Loader";
 import { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import AuthRoute from "./components/AuthRoute/AuthRoute";
 
 function App() {
   const auth = getAuth();
@@ -50,7 +51,14 @@ function App() {
             <Route path="/recipes" element={<Recipes />} />
           </Route>
           <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/auth" element={<Authentication />}>
+          <Route
+            path="/auth"
+            element={
+              <AuthRoute>
+                <Authentication />
+              </AuthRoute>
+            }
+          >
             <Route index element={<Navigate to="/auth/sign-in" replace />} />
             <Route path="sign-in" element={<SignIn />} />
             <Route path="sign-up" element={<SignUp />} />
