@@ -33,6 +33,14 @@ const Navigation = () => {
         )}
         <li className="nav__list-item">
           <NavLink
+            to="/how-it-works"
+            className={({ isActive }) => (isActive ? "active" : undefined)}
+          >
+            How It Works
+          </NavLink>
+        </li>
+        <li className="nav__list-item">
+          <NavLink
             to="/about-us"
             className={({ isActive }) => (isActive ? "active" : undefined)}
           >

@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import AuthRoute from "./components/AuthRoute/AuthRoute";
 import FAQPage from "./routes/FAQPage";
+import HowItWorks from "./routes/HowItWorks";
 
 function App() {
   const auth = getAuth();
@@ -51,6 +52,7 @@ function App() {
           <Route element={<PrivateRoutes />}>
             <Route path="/recipes" element={<Recipes />} />
           </Route>
+          <Route path="/how-it-works" element={<HowItWorks />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/faq" element={<FAQPage />} />
           <Route
