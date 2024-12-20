@@ -9,12 +9,42 @@ import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import AboutUs from "./routes/AboutUs";
 import PrivateRoutes from "./components/PrivateRoutes";
+import Loader from "./components/Loader";
+import { useEffect, useState } from "react";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 function App() {
+  const auth = getAuth();
+
+  const [authInitialized, setAuthInitialized] = useState(false);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, () => {
+      setAuthInitialized(true);
+    });
+
+    return () => unsubscribe();
+  });
+
+  if (!authInitialized) {
+    return (
+      <Loader
+        style={{
+          width: "200px",
+          height: "200px",
+          position: "fixed",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+        }}
+      />
+    );
+  }
+
   return (
     <>
       <Routes>
-        <Route path="/" element={<Application />}>
+        <Route path="/" element={<Application />} loader={() => <Loader />}>
           <Route index element={<Home />} />
           <Route element={<PrivateRoutes />}>
             <Route path="/recipes" element={<Recipes />} />

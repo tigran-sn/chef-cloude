@@ -12,6 +12,8 @@ const PrivateRoutes = () => {
   ) : (
     <Navigate
       to={`/auth/sign-in?redirectUrl=${encodeURIComponent(location.pathname)}`}
+      state={{ from: location }}
+      replace
     />
   );
 };
