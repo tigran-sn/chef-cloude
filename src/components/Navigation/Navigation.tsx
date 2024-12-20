@@ -39,6 +39,14 @@ const Navigation = () => {
             About Us
           </NavLink>
         </li>
+        <li className="nav__list-item">
+          <NavLink
+            to="/faq"
+            className={({ isActive }) => (isActive ? "active" : undefined)}
+          >
+            FAQ
+          </NavLink>
+        </li>
         {!currentUser ? (
           <li className="nav__list-item">
             <NavLink

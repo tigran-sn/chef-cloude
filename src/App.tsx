@@ -13,6 +13,7 @@ import Loader from "./components/Loader";
 import { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import AuthRoute from "./components/AuthRoute/AuthRoute";
+import FAQPage from "./routes/FAQPage";
 
 function App() {
   const auth = getAuth();
@@ -51,6 +52,7 @@ function App() {
             <Route path="/recipes" element={<Recipes />} />
           </Route>
           <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/faq" element={<FAQPage />} />
           <Route
             path="/auth"
             element={
