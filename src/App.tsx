@@ -44,7 +44,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Application />} loader={() => <Loader />}>
+        <Route path="/" element={<Application />}>
           <Route index element={<Home />} />
           <Route element={<PrivateRoutes />}>
             <Route path="/recipes" element={<Recipes />} />
